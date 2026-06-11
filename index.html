@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SawaPro Auto Repair Limited | Nairobi's Premier Luxury SUV Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.0/index.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        sawaYellow: '#FACC15',
+                        sawaBlack: '#0A0A0A',
+                        sawaBlue: '#E0F2FE',
+                        sawaBlueDark: '#38BDF8',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) 100%), url('https://image.qwenlm.ai/public_source/4daede22-8f55-4e3b-83f5-02028cbf7b9a/140fcd3ad-41ee-4019-84b7-ff06e33cb584.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(250, 204, 21, 0.25);
+        }
+        
+        .pill {
+            display: inline-block;
+            padding: 0.25rem 0.875rem;
+            border-radius: 9999px;
+            background-color: #E0F2FE;
+            color: #0369A1;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #FACC15;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background-color: #FACC15;
+            color: #0A0A0A;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 0.375rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+        }
+        .btn-primary:hover {
+            background-color: #FDE047;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(250, 204, 21, 0.4);
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 0.75rem;
+        }
+        .gallery-item img {
+            transition: transform 0.6s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+        
+        .map-container {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(0.9); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        .pulse-dot {
+            position: relative;
+        }
+        .pulse-dot::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background-color: #FACC15;
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+    </style>
+</head>
+<body class="bg-white text-sawaBlack antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-sawaBlack/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 hover:opacity-90 transition-opacity">
+                    <div class="w-10 h-10 bg-sawaYellow rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-sawaBlack" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="text-white font-bold text-lg leading-tight">SawaPro</div>
+                        <div class="text-sawaYellow text-xs font-semibold tracking-wider">AUTO REPAIR</div>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#services" class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors">Services</a>
+                    <a href="#why-us" class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors">Why Us</a>
+                    <a href="#gallery" class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors">Gallery</a>
+                    <a href="#contact" class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors">Contact</a>
+                    <a href="tel:0118277777" class="bg-sawaYellow text-sawaBlack px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-yellow-300 transition-colors">
+                        📞 0118 277 777
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-sawaBlack border-t border-white/10">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#services" class="block text-white/80 hover:text-white py-2 text-sm font-medium">Services</a>
+                <a href="#why-us" class="block text-white/80 hover:text-white py-2 text-sm font-medium">Why Us</a>
+                <a href="#gallery" class="block text-white/80 hover:text-white py-2 text-sm font-medium">Gallery</a>
+                <a href="#contact" class="block text-white/80 hover:text-white py-2 text-sm font-medium">Contact</a>
+                <a href="tel:0118277777" class="block bg-sawaYellow text-sawaBlack px-5 py-3 rounded-lg text-sm font-bold text-center mt-4"> 0118 277 777</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center relative pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+            <div class="max-w-3xl">
+                <div class="pill mb-6">Nairobi's Premier Luxury SUV Specialist</div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                    Transform Your Drive: <span class="text-sawaYellow">Nairobi's Premier Specialist</span> in Complex Automotive Customization.
+                </h1>
+                <p class="text-lg sm:text-xl text-white/80 mb-10 leading-relaxed max-w-2xl">
+                    From classic model facelifts to precision engineering, SawaPro Auto Repair brings advanced Chinese automotive expertise conveniently to the Makini School area.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#services" class="btn-primary">
+                        Explore Our Specialized Services
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-all text-sm uppercase tracking-wider">
+                        Book a Consultation
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-6 mt-16 pt-10 border-t border-white/10">
+                    <div>
+                        <div class="text-3xl sm:text-4xl font-bold text-sawaYellow">500+</div>
+                        <div class="text-white/60 text-sm mt-1">Luxury SUVs Serviced</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl sm:text-4xl font-bold text-sawaYellow">10+</div>
+                        <div class="text-white/60 text-sm mt-1">Years of Expertise</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl sm:text-4xl font-bold text-sawaYellow">98%</div>
+                        <div class="text-white/60 text-sm mt-1">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 animate-bounce">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Specialized Service Grid -->
+    <section id="services" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <div class="pill mb-4">Our Expertise</div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-sawaBlack mb-4">Specialized Services</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Six core disciplines engineered for luxury vehicles and high-performance SUVs.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="service-card fade-up stagger-1 bg-white rounded-2xl p-8 border border-gray-100">
+                    <div class="w-14 h-14 bg-sawaYellow rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-sawaBlack" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+                        </svg>
+                    </div>
+                    <div class="pill mb-4">Signature Service</div>
+                    <h3 class="text-xl font-bold text-sawaBlack mb-3">Convert Old Model to New Model</h3>
+                    <p class="text-gray-600 leading-relaxed">Specializing in Land Cruiser facelift transformations. We breathe new life into classic models with modern aesthetics and cutting-edge technology.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card fade-up stagger-2 bg-white rounded-2xl p-8 border border-gray-100">
+                    <div class="w-14 h-14 bg-sawaYellow rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-sawaBlack" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <div class="pill mb-4">Performance</div>
+                    <h3 class="text-xl font-bold text-sawaBlack mb-3">Vehicle Modification</h3>
+                    <p class="text-gray-600 leading-relaxed">Specialized performance upgrades and complex engine swaps. Unlock the full potential of your luxury SUV with our precision engineering.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card fade-up stagger-3 bg-white rounded-2xl p-8 border border-gray-100">
+                    <div class="w-14 h-14 bg-sawaYellow rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-sawaBlack" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                        </svg>
+                    </div>
+                    <div class="pill mb-4">Luxury Interior</div>
+                    <h3 class="text-xl font-bold text-sawaBlack mb-3">Interior Renovation</h3>
+                    <p class="text-gray-600 leading-relaxed">Custom, premium cabin upholstery and technology integration. Transform your cabin into a first-class experience with bespoke materials.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-card fade-up stagger-4 bg-white rounded-2xl p-8 border border-gray-100">
+                    <div class="w-14 h-14 bg-sawaYellow rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-sawaBlack" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/>
+                        </svg>
+                    </div>
+                    <div class="pill mb-4">Precision</div>
+                    <h3 class="text-xl font-bold text-sawaBlack mb-3">Four-Wheel Alignment</h3>
+                    <p class="text-gray-600 leading-relaxed">Using advanced, precision computerized alignment machinery. Ensure perfect handling, tire longevity, and driving safety for your SUV.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="service-card fade-up stagger-5 bg-white rounded-2xl p-8 border border-gray-100">
+                    <div class="w-14 h-14 bg-sawaYellow rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-sawaBlack" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <div class="pill mb-4">Expert Care</div>
+                    <h3 class="text-xl font-bold text-sawaBlack mb-3">Car Maintenance</h3>
+                    <p class="text-gray-600 leading-relaxed">Specialized care for high-end luxury engine systems. Comprehensive diagnostics and maintenance protocols tailored for Toyota Land Cruisers.</p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="service-card fade-up stagger-6 bg-white rounded-2xl p-8 border border-gray-100">
+                    <div class="w-14 h-14 bg-sawaYellow rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-sawaBlack" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                        </svg>
+                    </div>
+                    <div class="pill mb-4">Showroom Finish</div>
+                    <h3 class="text-xl font-bold text-sawaBlack mb-3">Car Detailing</h3>
+                    <p class="text-gray-600 leading-relaxed">Showroom finish polishing for SUVs. Meticulous exterior and interior detailing that restores your vehicle to factory-fresh perfection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="py-24 bg-sawaBlack text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-sawaYellow/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-sawaBlueDark/5 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16 fade-up">
+                <div class="pill mb-4" style="background-color: rgba(224, 242, 254, 0.1); color: #7DD3FC;">The SawaPro Difference</div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">Why Choose Us</h2>
+                <p class="text-white/60 max-w-2xl mx-auto text-lg">Three pillars of excellence that set us apart in Nairobi's automotive landscape.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Strength 1 -->
+                <div class="fade-up stagger-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-sawaYellow/50 transition-all duration-300">
+                    <div class="w-16 h-16 bg-sawaYellow/20 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-sawaYellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-sawaYellow">Chinese Precision Engineering</h3>
+                    <p class="text-white/70 leading-relaxed">Advanced methodology imported from China's cutting-edge automotive industry. We combine international expertise with local understanding for unmatched precision.</p>
+                </div>
+
+                <!-- Strength 2 -->
+                <div class="fade-up stagger-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-sawaYellow/50 transition-all duration-300">
+                    <div class="w-16 h-16 bg-sawaYellow/20 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-sawaYellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-sawaYellow">Nairobi Location</h3>
+                    <p class="text-white/70 leading-relaxed">Conveniently situated near Makini School on Ngong Road. Easily accessible from all major Nairobi neighborhoods, saving you time and hassle.</p>
+                </div>
+
+                <!-- Strength 3 -->
+                <div class="fade-up stagger-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-sawaYellow/50 transition-all duration-300">
+                    <div class="w-16 h-16 bg-sawaYellow/20 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-sawaYellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-sawaYellow">Luxury SUV Specialists</h3>
+                    <p class="text-white/70 leading-relaxed">Unmatched expertise with Toyota Land Cruisers and Prados. Our technicians possess deep, specialized knowledge that general garages simply cannot match.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof & Imagery Gallery -->
+    <section id="gallery" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <div class="pill mb-4">Our Work</div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-sawaBlack mb-4">Gallery of Excellence</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Real transformations. Real precision. Real results.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Before/After -->
+                <div class="fade-up stagger-1">
+                    <div class="gallery-item aspect-[4/5] relative group">
+                        <img src="https://image.qwenlm.ai/public_source/4daede22-8f55-4e3b-83f5-02028cbf7b9a/17dc63af3-b5b4-41cf-bc97-28afe945ad01.png" alt="Land Cruiser Facelift Before and After" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <div>
+                                <div class="pill mb-2">Transformation</div>
+                                <h3 class="text-white font-bold text-lg">Land Cruiser Model Facelift</h3>
+                                <p class="text-white/80 text-sm mt-1">Classic to contemporary conversion</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interior -->
+                <div class="fade-up stagger-2">
+                    <div class="gallery-item aspect-[4/5] relative group">
+                        <img src="https://image.qwenlm.ai/public_source/4daede22-8f55-4e3b-83f5-02028cbf7b9a/102c1d931-ca2f-4476-8418-5280b1aee62b.png" alt="Premium Interior Renovation" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <div>
+                                <div class="pill mb-2">Interior</div>
+                                <h3 class="text-white font-bold text-lg">Premium Cabin Renovation</h3>
+                                <p class="text-white/80 text-sm mt-1">Bespoke leather & tech integration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Laser Alignment -->
+                <div class="fade-up stagger-3">
+                    <div class="gallery-item aspect-[4/5] relative group">
+                        <img src="https://image.qwenlm.ai/public_source/4daede22-8f55-4e3b-83f5-02028cbf7b9a/1c49ea69c-b597-46a5-a087-e40468727b2c.png" alt="Laser Alignment Setup" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <div>
+                                <div class="pill mb-2">Precision</div>
+                                <h3 class="text-white font-bold text-lg">Computerized Laser Alignment</h3>
+                                <p class="text-white/80 text-sm mt-1">Advanced 3D alignment technology</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <section id="contact" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <div class="pill mb-4">Get In Touch</div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-sawaBlack mb-4">Contact Us</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">For inquiries, please call or visit us.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Contact Info -->
+                <div class="fade-up stagger-1 bg-white rounded-2xl p-8 sm:p-10 border border-gray-100 shadow-sm">
+                    <div class="space-y-8">
+                        <!-- Phone -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-14 h-14 bg-sawaYellow rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-7 h-7 text-sawaBlack" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-500 font-semibold uppercase tracking-wider mb-1">Telephone</div>
+                                <a href="tel:0118277777" class="text-2xl sm:text-3xl font-bold text-sawaBlack hover:text-sawaYellow transition-colors">0118 277 777</a>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-14 h-14 bg-sawaYellow rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-7 h-7 text-sawaBlack" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-500 font-semibold uppercase tracking-wider mb-1">Address</div>
+                                <div class="text-xl font-bold text-sawaBlack">Near Makini School</div>
+                                <div class="text-gray-600">Ngong Road, Nairobi, Kenya</div>
+                            </div>
+                        </div>
+
+                        <!-- Hours -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-14 h-14 bg-sawaYellow rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-7 h-7 text-sawaBlack" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-500 font-semibold uppercase tracking-wider mb-1">Working Hours</div>
+                                <div class="text-lg font-bold text-sawaBlack">Mon - Sat: 8:00 AM - 6:00 PM</div>
+                                <div class="text-gray-600">Sunday: By Appointment</div>
+                            </div>
+                        </div>
+
+                        <!-- CTA -->
+                        <div class="pt-4">
+                            <a href="tel:0118277777" class="btn-primary w-full justify-center">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                                Call Now: 0118 277 777
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Map -->
+                <div class="fade-up stagger-2 map-container aspect-square lg:aspect-auto lg:h-full min-h-[400px]">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8175!2d36.7719!3d-1.3147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1a6b3b3b3b3b%3A0x0!2sMakini+School+Ngong+Road+Nairobi!5e0!3m2!1sen!2ske!4v1234567890" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="SawaPro Auto Repair Location - Near Makini School, Ngong Road, Nairobi">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-sawaBlack text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <a href="#" class="flex items-center gap-3 mb-4 hover:opacity-90 transition-opacity inline-flex">
+                        <div class="w-12 h-12 bg-sawaYellow rounded-lg flex items-center justify-center">
+                            <svg class="w-7 h-7 text-sawaBlack" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-white font-bold text-xl leading-tight">SawaPro Auto Repair</div>
+                            <div class="text-sawaYellow text-sm font-semibold tracking-wider">LIMITED</div>
+                        </div>
+                    </a>
+                    <p class="text-white/60 leading-relaxed mb-4 max-w-md">
+                        Nairobi's premier specialist in complex automotive customization for luxury SUVs. Bringing advanced Chinese automotive expertise to the heart of Kenya.
+                    </p>
+                    <div class="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+                        <span class="text-sawaYellow font-bold text-lg tracking-widest">华 人 汽 修</span>
+                        <span class="text-white/50 text-sm">| Chinese Automotive Repair</span>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-sawaYellow font-bold mb-4 uppercase tracking-wider text-sm">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-white/70 hover:text-sawaYellow transition-colors">Our Services</a></li>
+                        <li><a href="#why-us" class="text-white/70 hover:text-sawaYellow transition-colors">Why Choose Us</a></li>
+                        <li><a href="#gallery" class="text-white/70 hover:text-sawaYellow transition-colors">Gallery</a></li>
+                        <li><a href="#contact" class="text-white/70 hover:text-sawaYellow transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-sawaYellow font-bold mb-4 uppercase tracking-wider text-sm">Contact</h4>
+                    <ul class="space-y-3 text-white/70">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-sawaYellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            0118 277 777
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-sawaYellow mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            </svg>
+                            Near Makini School, Ngong Road, Nairobi
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/50 text-sm">© 2026 SawaPro Auto Repair Limited. All rights reserved.</p>
+                <p class="text-white/50 text-sm">Precision Engineering • Luxury Expertise • Nairobi Pride</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Intersection Observer for fade-up animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar background on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
+
